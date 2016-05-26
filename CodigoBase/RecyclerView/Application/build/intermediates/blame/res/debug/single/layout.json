@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "R:\\Github\\Lab-Material-Design\\CodigoBase\\RecyclerView\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\text_row_item.xml",
+        "source": "R:\\Github\\Lab-Material-Design\\CodigoBase\\RecyclerView\\Application\\src\\main\\res\\layout\\text_row_item.xml"
+    },
+    {
+        "merged": "R:\\Github\\Lab-Material-Design\\CodigoBase\\RecyclerView\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "R:\\Github\\Lab-Material-Design\\CodigoBase\\RecyclerView\\Application\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "R:\\Github\\Lab-Material-Design\\CodigoBase\\RecyclerView\\Application\\build\\intermediates\\res\\merged\\debug\\layout\\recycler_view_frag.xml",
+        "source": "R:\\Github\\Lab-Material-Design\\CodigoBase\\RecyclerView\\Application\\src\\main\\res\\layout\\recycler_view_frag.xml"
+    }
+]
