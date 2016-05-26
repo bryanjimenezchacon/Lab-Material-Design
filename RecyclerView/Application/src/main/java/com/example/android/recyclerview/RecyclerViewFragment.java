@@ -40,43 +40,31 @@ public class RecyclerViewFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         initDataset();
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.recycler_view_frag, container, false);
         rootView.setTag(TAG);
-
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-
         mLayoutManager = new LinearLayoutManager(getActivity());
-
         mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-
         if (savedInstanceState != null) {
             mCurrentLayoutManagerType = (LayoutManagerType) savedInstanceState.getSerializable(KEY_LAYOUT_MANAGER);
         }
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
-
         mAdapter = new CustomAdapter(mDataset);
         mRecyclerView.setAdapter(mAdapter);
-
         return rootView;
     }
 
     public void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {
-
         int scrollPosition = 0;
-
         if (mRecyclerView.getLayoutManager() != null) {
             scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
         }
-
         switch (layoutManagerType) {
             case GRID_LAYOUT_MANAGER:
                 mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
@@ -96,43 +84,14 @@ public class RecyclerViewFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-
         savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
         super.onSaveInstanceState(savedInstanceState);
-
     }
 
     private void initDataset() {
         mDataset = new String[DATASET_COUNT];
         for (int i = 0; i < DATASET_COUNT; i++) {
-            mDataset[i] = "Elemento #" + i;
+            mDataset[i] = "This is element #" + i;
         }
-    }
-
-    public TextView getTextView() {
-        return textView;
-    }
-
-    public void CustomAdapter(String[] dataSet){
-        mDataset = dataSet;
-
-    }
-
-    @Override
-    public CustomAdapter.ViewHolder onCreateViewHolder (ViewGroup viewGroup, int viewType){
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.text_row_item, viewGroup, false);
-        return new CustomAdapter.ViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(CustomAdapter.ViewHolder viewHolder, final int position){
-        Log.d(TAG, "Element " + position + " set.");
-
-        viewHolder.getTextView().setText(mDataset[position]);
-    }
-
-    @Override
-    public int getItemCount(){
-        return mDataset.length;
     }
 }
