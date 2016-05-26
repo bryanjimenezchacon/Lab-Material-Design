@@ -9,8 +9,9 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
-
+import com.example.android.common.logger.Log;
 
 /**
  * Created by PHOENIXLENO on 26/05/2016.
@@ -82,7 +83,7 @@ public class RecyclerViewFragment extends Fragment {
                 mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
                 break;
             case LINEAR_LAYOUT_MANAGER:
-                mLayoutManager = new GridLayoutManager(getActivity());
+                mLayoutManager = new LinearLayoutManager(getActivity());
                 mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
                 break;
             default:
@@ -108,11 +109,9 @@ public class RecyclerViewFragment extends Fragment {
         }
     }
 
-
     public TextView getTextView() {
         return textView;
     }
-
 
     public void CustomAdapter(String[] dataSet){
         mDataset = dataSet;
@@ -120,13 +119,13 @@ public class RecyclerViewFragment extends Fragment {
     }
 
     @Override
-    public ViewHolder onCreateViewHolder (ViewGroup viewGroup, int viewType){
+    public CustomAdapter.ViewHolder onCreateViewHolder (ViewGroup viewGroup, int viewType){
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.text_row_item, viewGroup, false);
-        return new ViewHolder(v);
+        return new CustomAdapter.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position){
+    public void onBindViewHolder(CustomAdapter.ViewHolder viewHolder, final int position){
         Log.d(TAG, "Element " + position + " set.");
 
         viewHolder.getTextView().setText(mDataset[position]);
